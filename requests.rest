@@ -44,7 +44,6 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDg
 
 {
     "id": 265454,
-    "title": "Война и мир",
     "date": "2021-10-13",
     "author": 2920,
     "description": "qwerty",

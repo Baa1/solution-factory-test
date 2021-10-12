@@ -1,6 +1,13 @@
 const client = require('../db')
+const { validationResult } = require('express-validator')
 
 exports.create = async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.array() 
+        })
+    }
     try {
         let { title, date, author, description, image } = req.body
         let params = [title, date, author, description, image]
@@ -37,6 +44,12 @@ exports.getAll = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.array() 
+        })
+    }
     try {
         let { id, title, date, author, description, image } = req.body
         let params = [title, date, author, description, image, id]
