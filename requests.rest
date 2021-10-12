@@ -36,4 +36,4 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDE
 
 PUT http://localhost:3000/api/books/
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDEzNzYzLCJleHAiOjE2MzQwMTczNjN9.u1ks1zPk4ecXk60l8CvlFrUAXlssgmZohd4Neh2uhWA
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDcxOTk5LCJleHAiOjE2MzQwNzU1OTl9.2jxONOHz484LtFZzA6CTXv-0LEjsaY0sj7IXyxIhgi0

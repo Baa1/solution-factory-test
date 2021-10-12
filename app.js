@@ -17,4 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/auth', authRouter)
 app.use('/api/books', booksRouter)
 
+function booksGenerator() {
+    
+}
+
 module.exports = app

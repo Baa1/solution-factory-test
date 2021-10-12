@@ -1,5 +1,5 @@
 const client = require('../db')
-const { stringGenerator } = require('../common/ulils')
+const { stringGenerator, dateGenerator } = require('../common/ulils')
 
 exports.create = async (req, res) => {
     try {
@@ -41,6 +41,7 @@ exports.getAll = async (req, res) => {
 exports.update = async (req, res) => {
     try {
         console.log(stringGenerator(7))
+        console.log(dateGenerator('01/01/2000', '01/01/2020'))
     } catch (error) {
         
     }
