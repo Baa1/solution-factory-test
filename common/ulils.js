@@ -23,7 +23,12 @@ const dateGenerator = (date1, date2) => {
     }
 }
 
+const intGenerator = (max) => {
+    return Math.floor(Math.random() * max);
+  }
+
 module.exports = {
     stringGenerator,
-    dateGenerator
+    dateGenerator,
+    intGenerator
 }
