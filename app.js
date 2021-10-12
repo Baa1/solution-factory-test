@@ -5,8 +5,6 @@ const logger = require('morgan')
 const client = require('./db')
 const { stringGenerator, dateGenerator, intGenerator } = require('./common/ulils')
 
-const authRouter = require('./routes/auth.routes')
-const booksRouter = require('./routes/books.routes')
 
 const app = express()
 
@@ -16,8 +14,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/api/auth', authRouter)
-app.use('/api/books', booksRouter)
+const mountRoutes = require('./routes')
 
 let authorIds = []
 let imageIds = []
@@ -51,7 +48,11 @@ async function generateImages() {
 }
 
 function generateBooks() {
-
+    try {
+        
+    } catch (error) {
+        console.log(error.message)
+    }
 }
 
 async function init() {
@@ -63,5 +64,7 @@ async function init() {
 }
 
 init()
+
+mountRoutes(app)
 
 module.exports = app
