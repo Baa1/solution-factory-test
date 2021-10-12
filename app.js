@@ -65,7 +65,6 @@ async function generateBooks() {
 
 async function init() {
     let booksCount = (await client.query('SELECT COUNT(*) FROM books')).rows[0].count
-    console.log(booksCount)
     if (booksCount === 0) {
         await client.query('DELETE FROM books')
         await client.query('DELETE FROM images')

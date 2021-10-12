@@ -20,20 +20,33 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/books/
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDEzNzYzLCJleHAiOjE2MzQwMTczNjN9.u1ks1zPk4ecXk60l8CvlFrUAXlssgmZohd4Neh2uhWA
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDgxNjUzLCJleHAiOjE2MzQwODUyNTN9.I-6NGCLqC3xq1CMWhUGHZtnOaRMfZVSrzIbH-8WYhDA
 
 {
-    "title": "Sherlock holmes"
+    "title": "Война и мир",
+    "date": "2021-10-13",
+    "author": 2920,
+    "description": "qwerty",
+    "image": 2870
 }
 
 ###
 
-GET http://localhost:3000/api/books?orderby=title&limit=2&offset=3
+GET http://localhost:3000/api/books?limit=500&offset=15&groupby=title
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDEzNzYzLCJleHAiOjE2MzQwMTczNjN9.u1ks1zPk4ecXk60l8CvlFrUAXlssgmZohd4Neh2uhWA
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDgwOTMwLCJleHAiOjE2MzQwODQ1MzB9.V6PDHoGR64BqA7iA7KxzYBALvKvv1nIztov69PuMlEY
 
 ###
 
 PUT http://localhost:3000/api/books/
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDcxOTk5LCJleHAiOjE2MzQwNzU1OTl9.2jxONOHz484LtFZzA6CTXv-0LEjsaY0sj7IXyxIhgi0
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDgxNjUzLCJleHAiOjE2MzQwODUyNTN9.I-6NGCLqC3xq1CMWhUGHZtnOaRMfZVSrzIbH-8WYhDA
+
+{
+    "id": 265454,
+    "title": "Война и мир",
+    "date": "2021-10-13",
+    "author": 2920,
+    "description": "qwerty",
+    "image": 2870
+}
