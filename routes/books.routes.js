@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
+const { authJwt } = require('../middlewares')
 const controller = require('../controllers/books.controller')
 
-router.post('/', controller.create)
+router.post('/', [authJwt.verifyToken], controller.create)
 
-router.get('/', controller.getAll)
+router.get('/', [authJwt.verifyToken], controller.getAll)
 
-router.put('/', controller.update)
+router.put('/', [authJwt.verifyToken], controller.update)
 
 module.exports = router

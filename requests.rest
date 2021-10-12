@@ -20,6 +20,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/books/
 Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDEzNzYzLCJleHAiOjE2MzQwMTczNjN9.u1ks1zPk4ecXk60l8CvlFrUAXlssgmZohd4Neh2uhWA
 
 {
     "title": "Sherlock holmes"
@@ -27,5 +28,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/books/
+GET http://localhost:3000/api/books?orderby=title&limit=2&offset=3
 Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDEzNzYzLCJleHAiOjE2MzQwMTczNjN9.u1ks1zPk4ecXk60l8CvlFrUAXlssgmZohd4Neh2uhWA
+
+###
+
+PUT http://localhost:3000/api/books/
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM0MDEzNzYzLCJleHAiOjE2MzQwMTczNjN9.u1ks1zPk4ecXk60l8CvlFrUAXlssgmZohd4Neh2uhWA

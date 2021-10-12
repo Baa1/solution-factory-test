@@ -1,4 +1,5 @@
 const client = require('../db')
+const { stringGenerator } = require('../common/ulils')
 
 exports.create = async (req, res) => {
     try {
@@ -14,7 +15,23 @@ exports.create = async (req, res) => {
 
 exports.getAll = async (req, res) => {
     try {
-        let books = (await client.query('SELECT * FROM books')).rows
+        let { groupby, orderby, limit, offset } = req.query
+        let query = ''
+        if (groupby) {
+            query = `SELECT ${groupby}, COUNT(${groupby}) FROM books GROUP BY ${groupby}`
+        } else {
+            query = 'SELECT * FROM books'
+        }
+        if (orderby) {
+            query += ` ORDER BY ${orderby}`
+        }
+        if (limit) {
+            query += ` LIMIT ${limit}`
+        }
+        if (offset) {
+            query += ` OFFSET ${offset}`
+        }
+        let books = (await client.query(query)).rows
         return res.send(books)
     } catch (error) {
         return res.status(500).send({ message: error.message })
@@ -23,7 +40,7 @@ exports.getAll = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        
+        console.log(stringGenerator(7))
     } catch (error) {
         
     }
