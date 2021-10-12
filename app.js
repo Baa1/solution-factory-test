@@ -21,7 +21,6 @@ let imageIds = []
 
 async function generateAuthors() {
     try {
-        await client.query('DELETE FROM authors')
         for (let i = 0; i < 50; i++) {
             let name = stringGenerator(intGenerator(50))
             let surname = stringGenerator(intGenerator(50))
@@ -36,7 +35,7 @@ async function generateAuthors() {
 async function generateImages() {
     let extArr = ['jpeg', 'png', 'svg']
     try {
-        await client.query('DELETE FROM images')
+        
         for (let i = 0; i < 50; i++) {
             let filename = stringGenerator(intGenerator(200))
             let ext = extArr[intGenerator(extArr.length)]
@@ -47,20 +46,34 @@ async function generateImages() {
     }
 }
 
-function generateBooks() {
+async function generateBooks() {
     try {
-        
+        for (let i = 0; i < 100000; i++) {
+            let title = stringGenerator(200)
+            let date = dateGenerator('1900-01-01', '2021-12-31')
+            let author = authorIds[intGenerator(authorIds.length)]
+            let description = stringGenerator(500)
+            let image = imageIds[intGenerator(imageIds.length)]
+            let params = [title, date, author, description, image]
+            await client.query('INSERT INTO books (title, date, author, description, image) VALUES ($1, $2, $3, $4, $5)', params)
+        }
+        console.log('Books added')
     } catch (error) {
         console.log(error.message)
     }
 }
 
 async function init() {
-    await generateAuthors()
-    console.log(authorIds)
-    await generateImages()
-    console.log(imageIds)
-    await generateBooks()
+    let booksCount = (await client.query('SELECT COUNT(*) FROM books')).rows[0].count
+    console.log(booksCount)
+    if (booksCount === 0) {
+        await client.query('DELETE FROM books')
+        await client.query('DELETE FROM images')
+        await client.query('DELETE FROM authors')
+        await generateAuthors()
+        await generateImages()
+        await generateBooks()
+    }
 }
 
 init()
