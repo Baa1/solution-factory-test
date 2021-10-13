@@ -25,7 +25,9 @@ exports.getAll = async (req, res) => {
         if (groupby) {
             query = `SELECT ${groupby}, COUNT(${groupby}) FROM books GROUP BY ${groupby}`
         } else {
-            query = 'SELECT * FROM books'
+            query = 'SELECT b.title, b.date, b.description, aut.name, aut.surname, aut.patronymic, img.filename, img.ext FROM books AS b' + 
+            ' LEFT JOIN authors AS aut ON b.author = aut.id' +
+            ' LEFT JOIN images AS img ON b.image = img.id'
         }
         if (orderby) {
             query += ` ORDER BY ${orderby}`
