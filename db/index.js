@@ -1,6 +1,8 @@
-const { Pool } = require('pg')
+const { Client } = require('pg')
 const config = require('../database.json')
 
-const pool = new Pool(config.dev)
+const client = new Client(config.dev)
 
-module.exports = pool
+client.connect()
+
+module.exports = client
