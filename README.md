@@ -1,5 +1,9 @@
 # solution-factory-test
- 
+
+# config files
+database.json - файл с настройками подключения к БД для db-migtare
+config/db.config.js - файс с настройками подключения к БД для pg
+
 # setup project
 npm install
 
