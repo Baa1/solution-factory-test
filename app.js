@@ -27,6 +27,7 @@ async function generateAuthors() {
             let patronymic = stringGenerator(intGenerator(50))
             authorIds.push((await client.query('INSERT INTO authors (surname, name, patronymic) VALUES ($1, $2, $3) RETURNING id', [surname,  name, patronymic])).rows[0].id)
         }
+        console.log('Authors added')
     } catch (error) {
         console.log(error.message)
     }   
@@ -35,12 +36,12 @@ async function generateAuthors() {
 async function generateImages() {
     let extArr = ['jpeg', 'png', 'svg']
     try {
-        
         for (let i = 0; i < 50; i++) {
             let filename = stringGenerator(intGenerator(200))
             let ext = extArr[intGenerator(extArr.length)]
             imageIds.push((await client.query('INSERT INTO images (filename, ext) VALUES ($1, $2) RETURNING id', [filename,  ext])).rows[0].id)
         }
+        console.log('Images added')
     } catch (error) {
         console.log(error.message)
     }
@@ -65,13 +66,16 @@ async function generateBooks() {
 
 async function init() {
     let booksCount = (await client.query('SELECT COUNT(*) FROM books')).rows[0].count
-    if (booksCount === 0) {
+    console.log(booksCount)
+    if (booksCount == 0) {
+        console.log('Generation start')
         await client.query('DELETE FROM books')
         await client.query('DELETE FROM images')
         await client.query('DELETE FROM authors')
         await generateAuthors()
         await generateImages()
         await generateBooks()
+        console.log('Generation end')
     }
 }
 
