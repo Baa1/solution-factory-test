@@ -32,9 +32,9 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM0MDg
 
 ###
 
-GET http://localhost:3000/api/books?limit=20&groupby=author
+GET http://localhost:3000/api/books?limit=20
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM0MDg3MjUzLCJleHAiOjE2MzQwOTA4NTN9.2XRiUUFfCB4FlwdTVlbq7d9hJzx-JYpfyk1ncu_AjqA
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM0MTMyNDI5LCJleHAiOjE2MzQxMzYwMjl9.Vkwhvixq4iY0pwmt18c2j5RC_St9Zr0nz7gbw2ZJphM
 
 ###
 
