@@ -1,5 +1,6 @@
 const client = require('../db')
 const { validationResult } = require('express-validator')
+const { booksService } = require('../services')
 
 exports.create = async (req, res) => {
     const errors = validationResult(req)
@@ -9,10 +10,11 @@ exports.create = async (req, res) => {
         })
     }
     try {
-        let { title, date, author, description, image } = req.body
-        let params = [title, date, author, description, image]
-        let result = (await client.query('INSERT INTO books (title, date, author, description, image) VALUES ($1, $2, $3, $4, $5) RETURNING *', params))
-        return res.send({ book: result.rows[0] })
+        // let { title, date, author, description, image } = req.body
+        // let params = [title, date, author, description, image]
+        // let result = (await client.query('INSERT INTO books (title, date, author, description, image) VALUES ($1, $2, $3, $4, $5) RETURNING *', params))
+        // return res.send({ book: result.rows[0] })
+        return res.send(booksService.create())
     } catch (error) {
         return res.status(500).send({ message: error.message })
     }
@@ -20,26 +22,27 @@ exports.create = async (req, res) => {
 
 exports.getAll = async (req, res) => {
     try {
-        let { groupby, orderby, limit, offset } = req.query
-        let query = ''
-        if (groupby) {
-            query = `SELECT ${groupby}, COUNT(${groupby})::integer FROM books GROUP BY ${groupby}`
-        } else {
-            query = 'SELECT b.id, b.title, b.date, b.description, aut.name, aut.surname, aut.patronymic, img.filename, img.ext FROM books AS b' + 
-            ' LEFT JOIN authors AS aut ON b.author = aut.id' +
-            ' LEFT JOIN images AS img ON b.image = img.id'
-        }
-        if (orderby) {
-            query += ` ORDER BY ${orderby}`
-        }
-        if (limit) {
-            query += ` LIMIT ${limit}`
-        }
-        if (offset) {
-            query += ` OFFSET ${offset}`
-        }
-        let books = (await client.query(query)).rows
-        return res.send(books)
+        // let { groupby, orderby, limit, offset } = req.query
+        // let query = ''
+        // if (groupby) {
+        //     query = `SELECT ${groupby}, COUNT(${groupby})::integer FROM books GROUP BY ${groupby}`
+        // } else {
+        //     query = 'SELECT b.id, b.title, b.date, b.description, aut.name, aut.surname, aut.patronymic, img.filename, img.ext FROM books AS b' + 
+        //     ' LEFT JOIN authors AS aut ON b.author = aut.id' +
+        //     ' LEFT JOIN images AS img ON b.image = img.id'
+        // }
+        // if (orderby) {
+        //     query += ` ORDER BY ${orderby}`
+        // }
+        // if (limit) {
+        //     query += ` LIMIT ${limit}`
+        // }
+        // if (offset) {
+        //     query += ` OFFSET ${offset}`
+        // }
+        // let books = (await client.query(query)).rows
+        // return res.send(books)
+        return res.send(booksService.getAll())
     } catch (error) {
         return res.status(500).send({ message: error.message })
     }
@@ -53,10 +56,11 @@ exports.update = async (req, res) => {
         })
     }
     try {
-        let { id, title, date, author, description, image } = req.body
-        let params = [title, date, author, description, image, id]
-        let result = await client.query('UPDATE books SET title = $1, date = $2, author = $3, description = $4, image = $5 WHERE id = $6 RETURNING *', params)
-        return res.send(result.rows[0])
+        // let { id, title, date, author, description, image } = req.body
+        // let params = [title, date, author, description, image, id]
+        // let result = await client.query('UPDATE books SET title = $1, date = $2, author = $3, description = $4, image = $5 WHERE id = $6 RETURNING *', params)
+        // return res.send(result.rows[0])
+        return res.send(booksService.update())
     } catch (error) {
         return res.status(500).send({ message: error.message })
     }
