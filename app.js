@@ -5,7 +5,6 @@ const logger = require('morgan')
 const client = require('./db')
 const { stringGenerator, dateGenerator, intGenerator } = require('./common/ulils')
 
-
 const app = express()
 
 app.use(logger('dev'))

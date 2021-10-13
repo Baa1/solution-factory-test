@@ -1,7 +1,7 @@
 const { Client } = require('pg')
-const config = require('../config/db.config')
+const config = require('../database.json')
 
-const client = new Client(config)
+const client = new Client(config.dev)
 
 client.connect()
 
