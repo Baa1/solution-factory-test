@@ -32,7 +32,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE
 
 ###
 
-GET http://localhost:3000/api/books?limit=3&groupby=date&orderby=title
+GET http://localhost:3000/api/books?limit=10&groupby=date&orderby=date
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE4NTQ1OSwiZXhwIjoxNjM0MTg5MDU5fQ.5O8KfzDUQvV_Tmuly0Jtne8xNkIwUVYTW5g3I5q9gTs
 

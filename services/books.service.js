@@ -1,7 +1,7 @@
 const pool = require('../db')
 
 class BookService {
-    fields = ['title', 'date', 'author', 'description', 'image']
+    fields = ['id', 'title', 'date', 'author', 'description', 'image']
     async create(params)  {
         let client = await pool.connect()
         try {
