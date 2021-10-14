@@ -20,7 +20,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/book
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE3Nzc3NCwiZXhwIjoxNjM0MTgxMzc0fQ.HQE3zEzIMQFdD07cCEXeEisBlyxvyzwKSwEIsi8eZos
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE4Njc2MCwiZXhwIjoxNjM0MTkwMzYwfQ.0iWefAQJTkCzsWu0QPPcJseQGzT-ONfYZZkbS25klXA
 
 {
     "title": "Война и мир",
@@ -32,7 +32,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE
 
 ###
 
-GET http://localhost:3000/api/books?limit=3&groupby=title&groupby=date
+GET http://localhost:3000/api/books?limit=3&groupby=date&orderby=title
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE4NTQ1OSwiZXhwIjoxNjM0MTg5MDU5fQ.5O8KfzDUQvV_Tmuly0Jtne8xNkIwUVYTW5g3I5q9gTs
 
@@ -40,11 +40,11 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE
 
 PUT http://localhost:3000/api/book/1
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE4MTQwNCwiZXhwIjoxNjM0MTg1MDA0fQ.TFCvhVLRFaOw9mVMJ22cG14XEBpiX2ryj9kvTPr0HpU
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE4NTQ1OSwiZXhwIjoxNjM0MTg5MDU5fQ.5O8KfzDUQvV_Tmuly0Jtne8xNkIwUVYTW5g3I5q9gTs
 
 {
     "title": "Заголовок",
-    "date": "2021-10-13",
+    "date": "2021-10-15",
     "author": 3,
     "description": "qwerty",
     "image": 3

@@ -24,7 +24,8 @@ exports.get = async (req, res) => {
         let { groupby, orderby, limit, offset } = req.query
         if (typeof limit === 'object' || typeof offset === 'object' || typeof groupby === 'object' ||typeof orderby === 'object') {
             return res.status(400).send({ message: 'Wrong query format' })
-        } 
+        }
+        if (groupby && orderby && groupby !== orderby) return res.status(400).send({ message: 'Wrong query format' })
         if (limit && limit < 0) return res.status(400).send({ message: 'Limit cannot be less, than 0' })
         if (offset && offset < 0) return res.status(400).send({ message: 'Offset cannot be less, than 0' })
         let params = { groupby, orderby, limit, offset }
