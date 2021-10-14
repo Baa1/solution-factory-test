@@ -54,7 +54,7 @@ CREATE TABLE public.books
 (
     id serial NOT NULL,
     title character varying(200) COLLATE pg_catalog."default" NOT NULL,
-    date date,
+    date date NOT NULL,
     author integer,
     description character varying(500) COLLATE pg_catalog."default",
     image integer,

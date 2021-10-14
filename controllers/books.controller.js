@@ -11,6 +11,7 @@ exports.create = async (req, res) => {
     }
     try {
         let { title, date, author, description, image } = req.body
+        if (image && image < 0) return res.status(400).send({ message: 'Image value cannot be less, than 0' })
         let params = [title, new Date(date), author, description, image]
         let book = await booksService.create(params)
         return res.send(book)
@@ -47,6 +48,7 @@ exports.update = async (req, res) => {
     try {
         let id = req.params.id
         let { title, date, author, description, image } = req.body
+        if (image && image < 0) return res.status(400).send({ message: 'Image value cannot be less, than 0' })
         let params = [title, new Date(date), author, description, image, id]
         let book = await booksService.update(params)
         return res.send(book)
