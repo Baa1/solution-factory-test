@@ -1,27 +1,31 @@
 const express = require('express')
 const router = express.Router()
 const { authJwt } = require('../middlewares')
-const controller = require('../controllers/books.controller')
+const { booksController } = require('../controllers')
 const { check } = require('express-validator')
 
 router.post(
-    '/', 
+    '/book', 
     check('title', 'Поле title обязательно для заполнения').notEmpty(),
     check('title', 'Поле title не должно превышать 200 символов').isLength({ max: 200 }),
     check('description', 'Поле description не должно превышать 500 символов').isLength({ max: 500 }),
     [authJwt.verifyToken], 
-    controller.create
+    booksController.create
 )
 
-router.get('/', [authJwt.verifyToken], controller.getAll)
+router.get(
+    '/books', 
+    [authJwt.verifyToken], 
+    booksController.getAll
+)
 
 router.put(
-    '/', 
+    '/book/:id', 
     check('title', 'Поле title обязательно для заполнения').notEmpty(), 
     check('title', 'Поле title не должно превышать 200 символов').isLength({ max: 200 }),
     check('description', 'Поле description не должно превышать 500 символов').isLength({ max: 500 }),
     [authJwt.verifyToken], 
-    controller.update
+    booksController.update
 )
 
 module.exports = router

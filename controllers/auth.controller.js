@@ -22,6 +22,12 @@ exports.signUp = (req, res) => {
 }
 
 exports.signIn = (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.array() 
+        })
+    }
     client.query('SELECT id, login, password FROM users WHERE login = $1', [req.body.login])
     .then(result => {
         if (result.rows.length === 0) return res.status(404).send({ message: 'User Not found.' })
