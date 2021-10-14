@@ -21,27 +21,16 @@ exports.create = async (req, res) => {
 
 exports.get = async (req, res) => {
     try {
-        // let { groupby, orderby, limit, offset } = req.query
-        // let query = ''
-        // if (groupby) {
-        //     query = `SELECT ${groupby}, COUNT(${groupby})::integer FROM books GROUP BY ${groupby}`
-        // } else {
-        //     query = 'SELECT b.id, b.title, b.date, b.description, aut.name, aut.surname, aut.patronymic, img.filename, img.ext FROM books AS b' + 
-        //     ' LEFT JOIN authors AS aut ON b.author = aut.id' +
-        //     ' LEFT JOIN images AS img ON b.image = img.id'
-        // }
-        // if (orderby) {
-        //     query += ` ORDER BY ${orderby}`
-        // }
-        // if (limit) {
-        //     query += ` LIMIT ${limit}`
-        // }
-        // if (offset) {
-        //     query += ` OFFSET ${offset}`
-        // }
-        // let books = (await client.query(query)).rows
-        // return res.send(books)
-        return res.send(booksService.get())
+        let { groupby, orderby, limit, offset } = req.query
+        if (typeof limit === 'object' || typeof offset === 'object' || typeof groupby === 'object' ||typeof orderby === 'object') {
+            return res.status(400).send({ message: 'Wrong query format' })
+        } 
+        if (limit && limit < 0) return res.status(400).send({ message: 'Limit cannot be less, than 0' })
+        if (offset && offset < 0) return res.status(400).send({ message: 'Offset cannot be less, than 0' })
+        let params = { groupby, orderby, limit, offset }
+        let result = await booksService.get(params)
+        if (result && result.error) return res.status(400).send({ message: result.error })
+        return res.send(result)
     } catch (error) {
         return res.status(500).send({ message: error.message })
     }
