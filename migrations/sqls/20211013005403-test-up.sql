@@ -1,8 +1,6 @@
 /* Replace with your SQL commands */
 -- Table: public.users
 
--- DROP TABLE public.users;
-
 CREATE TABLE public.users
 (
     id serial NOT NULL,
@@ -19,8 +17,6 @@ ALTER TABLE public.users
 
 -- Table: public.authors
 
--- DROP TABLE public.authors;
-
 CREATE TABLE public.authors
 (
     id serial NOT NULL,
@@ -36,8 +32,6 @@ ALTER TABLE public.authors
     OWNER to postgres;
 
 -- Table: public.images
-
--- DROP TABLE public.images;
 
 CREATE TABLE public.images
 (
