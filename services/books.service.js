@@ -24,10 +24,10 @@ class BookService {
             let { groupby, orderby, limit, offset } = params
             console.log()
             if (groupby && !this.fields.includes(groupby)) {
-                return { error: `Поле ${groupby} не существует в теблице books` }
+                return { error: `Field ${groupby} in table books not exists` }
             }
             if (orderby && !this.fields.includes(orderby)) {
-                return { error: `Поле ${orderby} не существует в теблице books` }
+                return { error: `Field ${orderby} in table books not exists` }
             }
             let query = ''
             if (groupby) {
