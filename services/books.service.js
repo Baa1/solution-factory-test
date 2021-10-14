@@ -1,4 +1,4 @@
-const pool = require('../db')
+const client = require('../db')
 
 class BookService {
     create()  {

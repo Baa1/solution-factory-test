@@ -3,22 +3,22 @@ const client = require('../db')
 const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const { authService } = require('../services')
 
-exports.signUp = (req, res) => {
+exports.signUp = async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(400).json({
             errors: errors.array() 
         })
     }
-    let { login, password } = req.body
-    client.query('INSERT INTO users (login, password) VALUES ($1, $2) RETURNING id', [login, bcrypt.hashSync(password, 8)])
-    .then(result => {
-        return res.send({ id: result.rows[0].id })
-    })
-    .catch(error => {
+    try {
+        let { login, password } = req.body
+        let userId = await authService.signUp(login, password)
+        return res.send({ id: userId })
+    } catch (error) {
         return res.status(500).send({ message: error.message })
-    })
+    }
 }
 
 exports.signIn = (req, res) => {
