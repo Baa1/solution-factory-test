@@ -19,11 +19,12 @@ router.post(
 router.get(
     '/books', 
     [authJwt.verifyToken], 
-    booksController.getAll
+    booksController.get
 )
 
 router.put(
     '/book/:id', 
+    check('id', 'Поле id должно быть положительным целым числом').isInt({ gt: 0 }),
     check('title', 'Поле title обязательно для заполнения').notEmpty(), 
     check('title', 'Поле title не должно превышать 200 символов').isLength({ max: 200 }),
     check('description', 'Поле description не должно превышать 500 символов').isLength({ max: 500 }),

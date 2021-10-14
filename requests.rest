@@ -38,14 +38,14 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE
 
 ###
 
-PUT http://localhost:3000/api/books/
+PUT http://localhost:3000/api/book/1
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM0MDg3MjUzLCJleHAiOjE2MzQwOTA4NTN9.2XRiUUFfCB4FlwdTVlbq7d9hJzx-JYpfyk1ncu_AjqA
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNDE4MTQwNCwiZXhwIjoxNjM0MTg1MDA0fQ.TFCvhVLRFaOw9mVMJ22cG14XEBpiX2ryj9kvTPr0HpU
 
 {
-    "id": 265454,
+    "title": "Заголовок",
     "date": "2021-10-13",
-    "author": 2920,
+    "author": 3,
     "description": "qwerty",
-    "image": 2870
+    "image": 3
 }

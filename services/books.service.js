@@ -17,11 +17,25 @@ class BookService {
             client.release()
         }
     }
-    getAll() {
+    async get() {
         return { message: 'getAll' }
     }
-    update() {
-        return { message: 'update' }
+    async update(params) {
+        let client = await pool.connect()
+        try {
+            await client.query('BEGIN')
+            console.log(params)
+            let result = await client.query('UPDATE books SET title = $1, date = $2, author = $3, description = $4, image = $5 WHERE id = $6 RETURNING *', params)
+            if (result.rows && result.rows.length === 1) {
+                await client.query('COMMIT')
+                return result.rows[0]
+            }
+        } catch (error) {
+            await client.query('ROLLBACK')
+            throw error
+        } finally {
+            client.release()
+        }
     }
 }
 
