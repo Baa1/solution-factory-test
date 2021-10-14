@@ -24,7 +24,6 @@ class BookService {
         let client = await pool.connect()
         try {
             await client.query('BEGIN')
-            console.log(params)
             let result = await client.query('UPDATE books SET title = $1, date = $2, author = $3, description = $4, image = $5 WHERE id = $6 RETURNING *', params)
             if (result.rows && result.rows.length === 1) {
                 await client.query('COMMIT')
