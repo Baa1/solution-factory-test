@@ -10,11 +10,10 @@ exports.create = async (req, res) => {
         })
     }
     try {
-        // let { title, date, author, description, image } = req.body
-        // let params = [title, date, author, description, image]
-        // let result = (await client.query('INSERT INTO books (title, date, author, description, image) VALUES ($1, $2, $3, $4, $5) RETURNING *', params))
-        // return res.send({ book: result.rows[0] })
-        return res.send(booksService.create())
+        let { title, date, author, description, image } = req.body
+        let params = [title, new Date(date + 'T00:00:00'), author, description, image]
+        let book = await booksService.create(params)
+        return res.send(book)
     } catch (error) {
         return res.status(500).send({ message: error.message })
     }
